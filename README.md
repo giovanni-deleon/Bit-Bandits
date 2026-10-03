@@ -1,2 +1,2 @@
 # Bit-Bandits
-Hackathon...TBT
+Hackathon...TBD
