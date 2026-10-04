@@ -1,27 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="720.0" prefWidth="1280.0"
+      xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="vault.crack.bit_bandits_hack.LockPickController">
    <children>
-      <Pane prefHeight="200.0" prefWidth="200.0">
+      <Pane prefHeight="720.0" prefWidth="1280.0">
          <children>
+            <!-- Layer 1: Base Background Graphic -->
             <ImageView fitHeight="739.0" fitWidth="1294.0">
                <image>
                   <Image url="@../images/lock_picking_lvl2_BASE.png" />
                </image>
             </ImageView>
+
+            <!-- Layer 2: Overlay Shadow -->
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="749.0" layoutY="-10.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" width="1295.0" />
+
+            <!-- Layer 3: Keyhole Graphic -->
             <ImageView fitHeight="748.0" fitWidth="1288.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/lock_picking_lvl2_KEYHOLE.png" />
                </image>
             </ImageView>
+
+            <!-- Layer 4: Transition Button to Laser Heist -->
+            <Button text="Proceed to Laser Heist →"
+                    onAction="#switchToLaserHeist"
+                    layoutX="1020.0"
+                    layoutY="30.0"
+                    style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-background-color: #222222; -fx-text-fill: #ffffff; -fx-padding: 10 18; -fx-background-radius: 8; -fx-cursor: hand;" />
          </children>
       </Pane>
    </children>
