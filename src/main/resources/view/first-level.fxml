@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<StackPane fx:id="rootPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vault.crack.bit_bandits_hack.GameController">
+<?import javafx.scene.transform.Rotate?>
+<StackPane fx:id="rootPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vault.crack.bit_bandits_hack.GameController">
 
    <!-- Layer 1: Full-Screen Responsive Background Image -->
    <ImageView fitHeight="${rootPane.height}" fitWidth="${rootPane.width}" preserveRatio="false">
@@ -17,18 +16,19 @@
    <!-- Layer 2: Centered Vault Door & Dial (Scales dynamically with window size) -->
    <StackPane fx:id="vaultContainer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity">
       <!-- Safe Base Graphic -->
-      <ImageView fitWidth="${rootPane.width * 0.45}" preserveRatio="true">
+      <ImageView fitWidth="1100.0" layoutX="550.0" layoutY="309.375" preserveRatio="true">
          <image>
             <Image url="@../images/safe_ui_base.png" />
          </image>
       </ImageView>
 
-      <!-- Safe Dial Graphic -->
-      <ImageView fx:id="safeDial" fitWidth="${rootPane.width * 0.22}" preserveRatio="true">
+      <!-- Safe Inner Dial Graphic -->
+      <ImageView fx:id="safeDial" fitWidth="1100.0" preserveRatio="true">
          <image>
             <Image url="@../images/safe_ui_dial.png" />
          </image>
       </ImageView>
    </StackPane>
+
 
 </StackPane>
