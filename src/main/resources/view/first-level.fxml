@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
 
-<?import javafx.scene.transform.Rotate?>
 <StackPane fx:id="rootPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vault.crack.bit_bandits_hack.GameController">
 
    <!-- Layer 1: Full-Screen Responsive Background Image -->
@@ -30,5 +31,10 @@
       </ImageView>
    </StackPane>
 
+   <!-- Layer 3: Transition Arrow Button (Top Right Overlay) -->
+   <Button text="Lock Pick Mini-Game →"
+           onAction="#switchToLockPick"
+           StackPane.alignment="TOP_RIGHT"
+           style="-fx-margin: 20; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-color: #222222; -fx-text-fill: #ffffff; -fx-padding: 10 18; -fx-background-radius: 8; -fx-cursor: hand;" />
 
 </StackPane>

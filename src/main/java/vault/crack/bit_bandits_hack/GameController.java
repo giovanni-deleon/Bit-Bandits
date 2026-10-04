@@ -1,10 +1,18 @@
 package vault.crack.bit_bandits_hack;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.transform.Rotate;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class GameController {
 
@@ -17,8 +25,6 @@ public class GameController {
     @FXML
     public void initialize() {
         if (safeDial != null) {
-            // Attach a Rotate transform with placeholder pivot (0,0);
-            // pivot coordinates will update dynamically on mouse press
             rotateTransform = new Rotate(0, 0, 0);
             safeDial.getTransforms().add(rotateTransform);
 
@@ -46,37 +52,37 @@ public class GameController {
         double localCenterX = safeDial.getBoundsInLocal().getWidth() / 2.0;
         double localCenterY = safeDial.getBoundsInLocal().getHeight() / 2.0;
 
-        Point2D centerInScene = safeDial.localToScene(localCenterX, localCenterY);
+        Point2D centerInParent = safeDial.localToParent(localCenterX, localCenterY);
 
+        Node sourceNode = (Node) event.getSource();
+        Point2D mouseInParent = sourceNode.getParent().sceneToLocal(event.getSceneX(), event.getSceneY());
 
-        double deltaX = event.getSceneX() - centerInScene.getX();
-        double deltaY = event.getSceneY() - centerInScene.getY();
+        double deltaX = mouseInParent.getX() - centerInParent.getX();
+        double deltaY = mouseInParent.getY() - centerInParent.getY();
 
         return Math.toDegrees(Math.atan2(deltaY, deltaX));
     }
 
-    /**
-     * Calculates angle using Scene coordinates so mouse positions
-     * remain static relative to window bounds during rotation.
-     */
-    private double calculateAngleInSceneSpace() {
-        double localCenterX = safeDial.getBoundsInLocal().getWidth() / 2.0;
-        double localCenterY = safeDial.getBoundsInLocal().getHeight() / 2.0;
-
-        // Convert center pivot to Scene/Window coordinates
-        Point2D centerInScene = safeDial.localToScene(localCenterX, localCenterY);
-
-        // Track cursor relative to static scene center
-        double deltaX = safeDial.getScene().getX() - centerInScene.getX();
-        // Note: use local cursor location transformed to scene space
-        return 0; // Handled cleanly below via event-driven position
-    }
-
-    /**
-     * Helper to retrieve current lock rotation angle normalized between (0 - 360 degrees)
-     */
     public double getDialRotation() {
         double rotation = rotateTransform.getAngle() % 360;
         return rotation < 0 ? rotation + 360 : rotation;
+    }
+
+    /**
+     * Transitions from Level 1 to Lock Pick mini-game.
+     */
+    @FXML
+    public void switchToLockPick(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/lock-pick.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Could not load /view/lock-pick.fxml");
+        }
     }
 }
