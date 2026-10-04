@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="739.0" fitWidth="1294.0">
+               <image>
+                  <Image url="@../images/lock_picking_lvl2_BASE.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="749.0" layoutY="-10.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" width="1295.0" />
+            <ImageView fitHeight="748.0" fitWidth="1288.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/lock_picking_lvl2_KEYHOLE.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</VBox>
