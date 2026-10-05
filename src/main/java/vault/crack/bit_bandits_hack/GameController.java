@@ -10,8 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 
@@ -22,15 +20,6 @@ public class GameController {
 
     @FXML
     private Group safeDial;
-
-    @FXML
-    private Circle dot1;
-
-    @FXML
-    private Circle dot2;
-
-    @FXML
-    private Circle dot3;
 
     private final Rotate rotateTransform = new Rotate(0, 0, 0);
     private double startAngle = 0.0;
@@ -54,7 +43,7 @@ public class GameController {
     }
 
     private void handleMousePressed(MouseEvent event) {
-        Bounds bounds = safeDial.localToScene(safeDial.getBoundsInLocal());
+        Bounds bounds = safeDial.localToScene(safeDial.getLayoutBounds());
         fixedCenterInScene = new Point2D(
                 bounds.getMinX() + bounds.getWidth() / 2.0,
                 bounds.getMinY() + bounds.getHeight() / 2.0
@@ -76,7 +65,7 @@ public class GameController {
     private void handleMouseReleased(MouseEvent event) {
         if (combinationReached) {
             currentCombinationIndex++;
-            updateVisualCues(currentCombinationIndex);
+            System.out.println("Combination step reached: " + currentCombinationIndex + " / " + COMBINATION.length);
 
             if (currentCombinationIndex >= COMBINATION.length) {
                 System.out.println("Vault Unlocked!");
@@ -97,20 +86,6 @@ public class GameController {
         }
     }
 
-    private void updateVisualCues(int progress) {
-        Color activeColor = Color.web("#00ff66"); // Glowing Neon Green
-
-        if (progress >= 1 && dot1 != null) {
-            dot1.setFill(activeColor);
-        }
-        if (progress >= 2 && dot2 != null) {
-            dot2.setFill(activeColor);
-        }
-        if (progress >= 3 && dot3 != null) {
-            dot3.setFill(activeColor);
-        }
-    }
-
     private double calculateAngle(MouseEvent event) {
         double deltaX = event.getSceneX() - fixedCenterInScene.getX();
         double deltaY = event.getSceneY() - fixedCenterInScene.getY();
@@ -123,7 +98,6 @@ public class GameController {
     }
 
     private URL getLockPickResource() {
-        // Look up primary or root path locations for lock-pick.fxml
         URL resource = getClass().getResource("/view/lock-pick.fxml");
         if (resource == null) {
             resource = getClass().getResource("/lock-pick.fxml");
