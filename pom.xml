@@ -62,7 +62,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>vault.crack.bit_bandits_hack/vault.crack.bit_bandit_hackers.Launcher</mainClass>
+                            <mainClass>vault.crack.bit_bandits_hack/vault.crack.bit_bandits_hack.Launcher</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
