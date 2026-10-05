@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -24,11 +25,13 @@
       </ImageView>
 
       <!-- Safe Inner Dial Graphic -->
-      <ImageView fx:id="safeDial" fitWidth="1100.0" preserveRatio="true">
-         <image>
-            <Image url="@../images/safe_ui_dial.png" />
-         </image>
-      </ImageView>
+      <Group fx:id="safeDial">
+         <ImageView fitWidth="1100.0" preserveRatio="true">
+            <image>
+               <Image url="@../images/safe_ui_dial.png" />
+            </image>
+         </ImageView>
+      </Group>
    </StackPane>
 
    <!-- Layer 3: Transition Arrow Button (Top Right Overlay) -->
